@@ -1,10 +1,11 @@
 from flask import abort, request, Flask, jsonify, render_template
 from services.thaigov_attention import AttentionInferencer
 from services.tfidf_inferencer import TfIdfInferencer
+from services.seq2seq import Seq2SeqInferencer
 
 inferencers = {
     'attn': AttentionInferencer(),
-    'tfidf': TfIdfInferencer()
+    'seq2seq': Seq2SeqInferencer()
 }
 
 model_options = list(map(lambda model: (model, inferencers[model].get_name()) , inferencers))
