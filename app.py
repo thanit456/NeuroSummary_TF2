@@ -1,15 +1,12 @@
 from flask import abort, request, Flask, jsonify, render_template
-from services.thaigov_inferencer import ThaigovInferencer
 from services.thaigov_attention import AttentionInferencer
 from services.tfidf_inferencer import TfIdfInferencer
-import tensorflow as tf
 
 inferencers = {
     'attn': AttentionInferencer(),
     'tfidf': TfIdfInferencer()
 }
 
-graph = tf.compat.v1.get_default_graph()
 model_options = list(map(lambda model: (model, inferencers[model].get_name()) , inferencers))
 
 app = Flask(__name__)
@@ -37,10 +34,6 @@ def infer(inf_name='thaigov'):
         abort(404)
 
     content = request.json['content']
-    
-    # global graph
-    # with graph.as_default():
-    #     inferred_headline = inferencers[inf_name].infer(content)
     
     inferred_headline = inferencers[inf_name].infer(content)
 
