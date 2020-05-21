@@ -1,0 +1,6 @@
+tensorflow==2.2.0
+keras==2.2.5
+flask==1.1.2
+pythainlp==2.1.4
+deepcut==0.7.0
+gunicorn==19.9.0
