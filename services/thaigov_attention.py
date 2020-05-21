@@ -11,6 +11,7 @@ hparams = create_hparams()
 maxlen = hparams['maxlen']
 
 MODEL_ATTN_PATH = './model/v6_remove_stopword_50_20_attention_best.h5'
+# MODEL_ATTN_PATH = './model/200_20_v2.2_normal_best_200_20_attention_best.h5'
 
 with open('./decode/dictionary/dict_t_50_20_v2.pkl', 'rb') as f:
     dict_t = pickle.load(f)
@@ -29,7 +30,7 @@ class AttentionInferencer(Inferencer):
         self.model = load_model(MODEL_ATTN_PATH, custom_objects={ 'softmax': softmax })
 
     def get_name(self):
-        return 'Attention'
+        return 'Attention LSTM w/ force teaching'
 
     def preprocess(self, content):
         preprocessed_text = preprocess_text(content)

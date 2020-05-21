@@ -27,7 +27,7 @@ class ThaigovInferencer(Inferencer):
         self.infdec = models.load_model(infdec_path)
 
     def get_name(self):
-        return 'Thaigov'
+        return 'Encoder-Decoder'
 
     def infer(self, content):
         preprocessed_text = preprocess_text(content)
