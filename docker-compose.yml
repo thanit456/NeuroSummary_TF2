@@ -1,5 +1,14 @@
 version: "3.7"
 services:
+  server_tf1:
+    build: 
+      context: .
+      dockerfile: Dockerfile_tf1
+    ports: 
+      - "5001:5000"
+    volumes:
+      - ./:/app
+    network_mode: bridge
   server:
     build: .
     ports: 
@@ -7,4 +16,3 @@ services:
     volumes:
       - ./:/app
     network_mode: bridge
-    # command: [ "npm", "run", "dev" ]
