@@ -1,10 +1,14 @@
 from flask import abort, request, Flask, jsonify, render_template
 from services.thaigov_attention import AttentionInferencer
-from services.tfidf_inferencer import TfIdfInferencer
+from services.thaigov_attention2 import AttentionInferencer2
+from services.thaigov_attention_with_stopword import AttentionWithStopwordInferencer
+from services.extractive import ExtractiveInferencer
 from services.seq2seq import Seq2SeqInferencer
 
 inferencers = {
+    '1ext': ExtractiveInferencer(),
     'attn': AttentionInferencer(),
+    'attn_stop': AttentionWithStopwordInferencer(),
     'seq2seq': Seq2SeqInferencer()
 }
 

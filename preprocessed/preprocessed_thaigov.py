@@ -90,7 +90,7 @@ def preprocess_text(text, removed_stopwords=False):
     text = thai_digit_to_arabic_digit(text)
     text = basic_cleaner(text)
 
-    tokenized_text = word_tokenize(text, engine='deepcut')
+    tokenized_text = word_tokenize(text)
     tokenized_text = use_first_n_words(tokenized_text, n=hparams['maxlen'])
     if removed_stopwords:
         removed_stopwords_text = remove_stopwords(tokenized_text)
