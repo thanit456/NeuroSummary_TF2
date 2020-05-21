@@ -1,11 +1,9 @@
 from services.inferencer import Inferencer
 from config.hparams import create_hparams
 from tensorflow.keras.models import load_model
-from preprocessed.preprocessed_thaigov import preprocess_text, convert, word_to_index
-from decode.word_decode import inference
-import tensorflow as tf
 from tensorflow.keras.activations import softmax
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from preprocessed.preprocessed_thaigov import word_to_index, preprocess_text
 import pickle
 import numpy as np
 
