@@ -30,7 +30,7 @@ class AttentionInferencer(Inferencer):
         self.model = load_model(MODEL_ATTN_PATH, custom_objects={ 'softmax': softmax })
 
     def get_name(self):
-        return 'Attention LSTM w/ force teaching'
+        return 'Attention LSTM w/ teacher forcing'
 
     def preprocess(self, content):
         preprocessed_text = preprocess_text(content)
