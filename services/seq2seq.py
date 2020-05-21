@@ -199,7 +199,10 @@ class Seq2SeqInferencer(Inferencer):
         index_seq = pad_sequences([index_seq], maxlen=maxlen_input, padding='post')
         return index_seq
 
+    def postprocess(self, text):
+        return text.replace('<s>', '').replace('</s>', '').strip()
+
     def infer(self, content):
         preprocessed_text = self.preprocess(content)
         pred = translate(preprocessed_text)
-        return str(pred)
+        return self.postprocess(pred)
