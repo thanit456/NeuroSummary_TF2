@@ -42,7 +42,7 @@ class AttentionInferencer(Inferencer):
         out = []
         for token in pred:
             out.append(rev_dict_t[np.argmax(token)])
-        return ' '.join(out)
+        return ' '.join(out).replace('for_keras_zero_padding', '')
 
     def infer(self, content):
         index_seq = self.preprocess(content)
